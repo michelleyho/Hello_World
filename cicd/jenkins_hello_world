@@ -1,0 +1,20 @@
+pipeline {
+  agent any
+  stages {
+    stage ('Sync') {
+      steps {
+        sh 'echo Hello Build Sync'
+      }
+    }
+    stage ('Test') {
+      steps {
+        sh 'echo Hello Build Test'
+      }
+    }
+    stage ('Deploy'){
+      steps {
+        sh 'echo Hello Build Deploy'
+      }
+    }
+  }
+}
