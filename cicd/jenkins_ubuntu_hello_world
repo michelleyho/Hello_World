@@ -1,0 +1,25 @@
+pipeline {
+  agent { 
+        docker { 
+            image  'ubuntu'
+                }
+            }
+        }
+  stages {
+    stage ('Sync') {
+      steps {
+        echo 'Hello Build Sync'
+      }
+    }
+    stage ('Test') {
+      steps {
+        echo 'Hello Build Test'
+      }
+    }
+    stage ('Deploy'){
+      steps {
+        echo 'Hello Build Deploy'
+      }
+    }
+  }
+}
