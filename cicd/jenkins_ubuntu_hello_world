@@ -4,7 +4,7 @@ pipeline {
             image  'ubuntu'
                 }
             }
-        }
+     
   stages {
     stage ('Sync') {
       steps {
