@@ -1,1 +1,1 @@
-echo "windows shell script"
+Write-Host "windows shell script"
