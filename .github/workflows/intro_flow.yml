@@ -1,11 +1,39 @@
-name: GitHub Actions Demo
+name: Github Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on: [push]
+
 jobs:
-  Explore-GitHub-Actions:
-runs-on: ubuntu-latest
-steps:
-  – run: echo “The job was automatically triggered by a ${{ github.event_name }} event.”
+  exploration:
+
+  runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.9", "3.10", "3.11", "pypy3.9", "pypy3.10"]
+        exclude:
+          - os: macos-latest
+            python-version: "3.9"
+          - os: windows-latest
+            python-version: "3.9"
+
+  steps:  
+    - uses: actions/checkout@v3  
+    - name: Set up Python ${{ matrix.python-version }}  
+      uses: actions/setup-python@v4  
+      with:  
+        python-version: ${{ matrix.python-version }} 
+    – run: 
+        echo “The job was automatically triggered by a ${{ github.event_name }} event.”
+
+# name: GitHub Actions Demo
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+#on: [push]
+#jobs:
+#  Explore-GitHub-Actions:
+#runs-on: ubuntu-latest
+#steps:
+
 #  – run: echo “This job is now running on a ${{ runner.os }} server hosted by GitHub!”
 #  – run: echo “The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}.”
 #  - uses: actions/checkout@v4
@@ -16,7 +44,7 @@ steps:
 #      ls ${{ github.workspace }}
 #  – run: echo “This job’s status is ${{ job.status }}.”
 
-  
+
 
 
 
